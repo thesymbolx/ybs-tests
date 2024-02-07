@@ -1,4 +1,4 @@
-package com.example.ybstests
+package com.example.ybstests.test
 
 import io.cucumber.junit.CucumberOptions
 
