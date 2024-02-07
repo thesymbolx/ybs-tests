@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.ybstests"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.ybstests"
@@ -14,7 +14,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "io.cucumber.android.runner.CucumberAndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -66,4 +66,5 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+    androidTestImplementation("io.cucumber:cucumber-android:7.14.0")
 }
