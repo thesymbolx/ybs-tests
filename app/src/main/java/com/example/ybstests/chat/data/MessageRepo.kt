@@ -5,7 +5,7 @@ class MessageRepo(
     private val messageDataSourceLocal: MessageDataSourceLocal
 ) {
     fun sendMessage(message: String) {
-        messageDataSourceLocal.saveMessage()
+        messageDataSourceLocal.saveMessage(message)
         messageDataSourceRemote.sendMessage(message)
     }
 
