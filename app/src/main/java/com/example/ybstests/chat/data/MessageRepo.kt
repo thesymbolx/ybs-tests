@@ -4,9 +4,9 @@ class MessageRepo(
     private val messageDataSourceRemote: MessageDataSourceRemote,
     private val messageDataSourceLocal: MessageDataSourceLocal
 ) {
-    fun sendMessage() {
+    fun sendMessage(message: String) {
         messageDataSourceLocal.saveMessage()
-        messageDataSourceRemote.sendMessage()
+        messageDataSourceRemote.sendMessage(message)
     }
 
     fun getMessages() : List<String> {

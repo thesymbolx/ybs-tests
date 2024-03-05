@@ -6,6 +6,6 @@ class SendTextMessageUseCase(
     private val messageRepo: MessageRepo
 ) {
     operator fun invoke(text: String) {
-        messageRepo.sendMessage()
+        messageRepo.sendMessage(text)
     }
 }

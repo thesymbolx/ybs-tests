@@ -10,9 +10,9 @@ import com.example.ybstests.network.CacheApi
 import com.example.ybstests.network.MessageApi
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
-import org.junit.Test
 
-import org.junit.Assert.*
+
+var lastMessage: String? = null
 
 val fakeCache = object : CacheApi {
     override fun saveMessage() {
@@ -21,8 +21,8 @@ val fakeCache = object : CacheApi {
 }
 
 val fakeApi = object : MessageApi {
-    override fun sendMessage() {
-
+    override fun sendMessage(message: String) {
+        lastMessage = message
     }
 
     override fun getMessage(): List<String> {
@@ -42,16 +42,14 @@ val chatVm = ChatViewModel(
     sendTextMessageUseCase = SendTextMessageUseCase(messageRepo),
 )
 
+
 class MyTests : StringSpec({
-    "strings.length should return size of string" {
-        "hello".length shouldBe 5
+    "Given I send a text message" {
+        chatVm.onTextMessageSent("fake message")
     }
 
-    "when the view model is started" {
-        //jashdkahsdkhaskdjhakjshd
-        "the do tthis" {
-
-        }
+    "Then the message is sent" {
+        "fake message" shouldBe lastMessage
     }
 })
 
