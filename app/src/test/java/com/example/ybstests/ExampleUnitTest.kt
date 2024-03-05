@@ -14,37 +14,35 @@ import org.junit.Test
 
 import org.junit.Assert.*
 
+val fakeCache = object : CacheApi {
+    override fun saveMessage() {
+
+    }
+}
+
+val fakeApi = object : MessageApi {
+    override fun sendMessage() {
+
+    }
+
+    override fun getMessage(): List<String> {
+        return listOf(
+            "fake 1", "fake 2", "fake 2"
+        )
+    }
+}
+
+val messageRepo = MessageRepo(
+    messageDataSourceRemote = MessageDataSourceRemote(fakeApi),
+    messageDataSourceLocal = MessageDataSourceLocal(fakeCache)
+)
+
+val chatVm = ChatViewModel(
+    getChatMessagesUseCase = GetChatMessagesUseCase(messageRepo),
+    sendTextMessageUseCase = SendTextMessageUseCase(messageRepo),
+)
+
 class MyTests : StringSpec({
-
-    val fakeCache = object : CacheApi {
-        override fun saveMessage() {
-
-        }
-    }
-
-    val fakeApi = object : MessageApi {
-        override fun sendMessage() {
-
-        }
-
-        override fun getMessage(): List<String> {
-            return listOf(
-                "fake 1", "fake 2", "fake 2"
-            )
-        }
-    }
-
-    val messageRepo = MessageRepo(
-        messageDataSourceRemote = MessageDataSourceRemote(fakeApi),
-        messageDataSourceLocal = MessageDataSourceLocal(fakeCache)
-    )
-
-    val chatVm = ChatViewModel(
-        getChatMessagesUseCase = GetChatMessagesUseCase(messageRepo),
-        sendTextMessageUseCase = SendTextMessageUseCase(messageRepo),
-    )
-
-
     "strings.length should return size of string" {
         "hello".length shouldBe 5
     }

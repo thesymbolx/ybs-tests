@@ -12,7 +12,7 @@ class ChatViewModel(
 
     val state = MutableStateFlow(MessageUiState())
 
-    init {
+    fun getMessages() {
         state.value = MessageUiState(getChatMessagesUseCase.invoke())
     }
 
