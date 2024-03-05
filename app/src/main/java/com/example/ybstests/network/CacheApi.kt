@@ -1,5 +1,5 @@
 package com.example.ybstests.network
 
-interface FakeCacheApi {
+interface CacheApi {
     fun saveMessage()
 }

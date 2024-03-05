@@ -9,8 +9,8 @@ class MessageRepo(
         messageDataSourceRemote.sendMessage()
     }
 
-    fun getMessages() {
-        messageDataSourceRemote.sendMessage()
+    fun getMessages() : List<String> {
+        return messageDataSourceRemote.getMessage()
     }
 
 }

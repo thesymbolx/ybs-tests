@@ -1,5 +1,6 @@
 package com.example.ybstests.network
 
-interface FakeMessageApi {
+interface MessageApi {
     fun sendMessage()
+    fun getMessage() : List<String>
 }

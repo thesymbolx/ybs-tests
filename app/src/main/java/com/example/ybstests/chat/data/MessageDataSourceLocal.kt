@@ -1,11 +1,11 @@
 package com.example.ybstests.chat.data
 
-import com.example.ybstests.network.FakeCacheApi
+import com.example.ybstests.network.CacheApi
 
 class MessageDataSourceLocal(
-    private val fakeCacheApi: FakeCacheApi
+    private val cacheApi: CacheApi
 ) {
     fun saveMessage() {
-        fakeCacheApi.saveMessage()
+        cacheApi.saveMessage()
     }
 }

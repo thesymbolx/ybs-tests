@@ -1,11 +1,15 @@
 package com.example.ybstests.chat.data
 
-import com.example.ybstests.network.FakeMessageApi
+import com.example.ybstests.network.MessageApi
 
 class MessageDataSourceRemote(
-    private val fakeMessageApi: FakeMessageApi
+    private val messageApi: MessageApi
 ) {
     fun sendMessage() {
-        fakeMessageApi.sendMessage()
+        messageApi.sendMessage()
+    }
+
+    fun getMessage() : List<String> {
+        return messageApi.getMessage()
     }
 }

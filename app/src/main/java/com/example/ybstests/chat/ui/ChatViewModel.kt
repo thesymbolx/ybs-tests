@@ -10,11 +10,11 @@ class ChatViewModel(
     private val sendTextMessageUseCase: SendTextMessageUseCase,
 ) : ViewModel() {
 
-    val state: MutableStateFlow<MessageUiState>
-        get() = getChatMessagesUseCase().map {
-            val messageUiModelList = MessageUiModelMapper.fromMessagesList(it)
-            MessageUiState(messageUiModelList)
-        }
+    val state = MutableStateFlow(MessageUiState())
+
+    init {
+        state.value = MessageUiState(getChatMessagesUseCase.invoke())
+    }
 
     fun onTextMessageSent(text: String) {
         sendTextMessageUseCase(text)
