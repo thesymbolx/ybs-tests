@@ -16,7 +16,7 @@ class ChatViewModel(
         state.value = MessageUiState(getChatMessagesUseCase.invoke())
     }
 
-    fun onTextMessageSent(text: String) {
+    fun sendMessageSent(text: String) {
         sendTextMessageUseCase(text)
     }
 }
