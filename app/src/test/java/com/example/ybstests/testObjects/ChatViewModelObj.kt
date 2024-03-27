@@ -14,7 +14,9 @@ private fun getMessageRepo(chatTestConfig: ChatTestConfig) =
     )
 
 fun getChatViewModel(chatTestConfig: ChatTestConfig = ChatTestConfig()) =
-    ChatViewModel(
-        getChatMessagesUseCase = GetChatMessagesUseCase(getMessageRepo(chatTestConfig)),
-        sendTextMessageUseCase = SendTextMessageUseCase(getMessageRepo(chatTestConfig)),
-    )
+    getMessageRepo(chatTestConfig).run {
+        ChatViewModel(
+            getChatMessagesUseCase = GetChatMessagesUseCase(this),
+            sendTextMessageUseCase = SendTextMessageUseCase(this),
+        )
+    }

@@ -6,7 +6,7 @@ import org.junit.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertIterableEquals
 
-class MyTests {
+class ChatViewModelTests {
 
     @Test
     fun `Given I request my messages, then valid messages are returned`() {

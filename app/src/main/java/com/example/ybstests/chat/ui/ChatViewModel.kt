@@ -17,6 +17,8 @@ class ChatViewModel(
     }
 
     fun sendMessageSent(text: String) {
-        sendTextMessageUseCase(text)
+        if(!text.contains("*")) {
+            sendTextMessageUseCase(text)
+        }
     }
 }

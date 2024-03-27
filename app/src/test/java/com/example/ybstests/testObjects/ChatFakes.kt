@@ -30,6 +30,8 @@ class CacheApiFake(private val chatCacheTestConfig: ChatCacheTestConfig) : Cache
 }
 
 class MessageApiFake(private val chatApiTestConfig: ChatApiTestConfig) : MessageApi {
+    val sentMessages = mutableListOf<String>()
+
     companion object {
         var lastMessage: String? = null
     }
@@ -39,10 +41,11 @@ class MessageApiFake(private val chatApiTestConfig: ChatApiTestConfig) : Message
     }
 
     override fun sendMessage(message: String) {
+        sentMessages.add(message)
         lastMessage = message
     }
 
     override fun getMessage(): List<String> {
-        return chatApiTestConfig.apiMessages
+        return chatApiTestConfig.apiMessages + sentMessages
     }
 }
